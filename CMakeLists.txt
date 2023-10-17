@@ -88,7 +88,7 @@ list(REMOVE_ITEM SOURCESDBLE "${CMAKE_SOURCE_DIR}/src/fortran/main.f90")
 #list(REMOVE_ITEM SOURCESDBLE "${CMAKE_SOURCE_DIR}/src/fortran/xfoil_only.f90")
 list(REMOVE_ITEM SOURCESDBLE "${CMAKE_SOURCE_DIR}/src/fortran/xfoil_worker.f90")
 list(REMOVE_ITEM SOURCESDBLE "${CMAKE_SOURCE_DIR}/src/fortran/x5_api_tester.f90")
-list(REMOVE_ITEM SOURCESDBLE "${CMAKE_SOURCE_DIR}/src/fortran/a_playground.f90")
+#list(REMOVE_ITEM SOURCESDBLE "${CMAKE_SOURCE_DIR}/src/fortran/a_playground.f90")
 
 # Real-8 flag for xfoil source files
 set_source_files_properties(${SOURCESREAL} PROPERTIES COMPILE_FLAGS ${Fortran_REAL8_FLAG})
@@ -102,13 +102,13 @@ add_library(MYOBJLIB OBJECT ${SOURCESDBLE} ${SOURCESREAL})
 add_executable("xoptfoil-JX"   $<TARGET_OBJECTS:MYOBJLIB> "src/fortran/main.f90")
 add_executable("xfoil_worker"  $<TARGET_OBJECTS:MYOBJLIB> "src/fortran/xfoil_worker.f90")
 add_executable("x5_api_tester" $<TARGET_OBJECTS:MYOBJLIB> "src/fortran/x5_api_tester.f90")
-add_executable("a_playground"  $<TARGET_OBJECTS:MYOBJLIB> "src/fortran/a_playground.f90")
+#add_executable("a_playground"  $<TARGET_OBJECTS:MYOBJLIB> "src/fortran/a_playground.f90")
 
 # Build dll
 add_library(x5_api SHARED $<TARGET_OBJECTS:MYOBJLIB>)
 
 # Installation
-install(TARGETS xoptfoil-JX xfoil_worker x5_api_tester a_playground DESTINATION bin)
+install(TARGETS xoptfoil-JX xfoil_worker x5_api_tester DESTINATION bin)
 install(FILES src/python/xoptfoil_visualizer-jx.py
         PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
                     GROUP_READ             GROUP_EXECUTE

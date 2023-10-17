@@ -295,7 +295,7 @@ subroutine run_op_points (foil, geom_options, xfoil_options,         &
       tmp_op_spec = op_spec
       if (op_spec%spec_cl) then
         if (op_spec%value > 0d0) then 
-           tmp_op_spec%value = op_spec%value - 0.02d0
+          tmp_op_spec%value = op_spec%value - 0.02d0
         else 
           tmp_op_spec%value = op_spec%value + 0.02d0
         end if 
@@ -408,8 +408,8 @@ end subroutine run_op_points
 !===============================================================================
 
 subroutine run_op_point (op_point_spec,        &
-                         viscous_mode, maxit, show_details,  &
-                         op_point_result)
+                          viscous_mode, maxit, show_details,  &
+                          op_point_result)
 
   use xfoil_inc
 
@@ -483,7 +483,7 @@ subroutine run_op_point (op_point_spec,        &
   ! Restore default ncrit 
 
   ACRIT = save_ACRIT
- 
+
   ! Outputs
 
   op_point_result%cl    = CL
